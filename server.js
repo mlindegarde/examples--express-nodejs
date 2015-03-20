@@ -14,7 +14,11 @@ app.use('/public', express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res){
-  res.render('index', {title: 'home'});
+  res.render('index', {title: 'Home'});
+})
+
+app.get('/about', function(req, res){
+  res.render('about', {title: 'About'})
 })
 
 var port = process.env.PORT || 3000;
