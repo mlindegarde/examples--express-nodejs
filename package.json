@@ -21,5 +21,8 @@
     "express": "^4.12.3",
     "swig": "^1.4.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-ruby-sass": "^1.0.0-alpha.3"
+  }
 }
