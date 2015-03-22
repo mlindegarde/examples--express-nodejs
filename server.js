@@ -21,6 +21,10 @@ app.get('/about', function(req, res){
   res.render('about', {title: 'About'})
 })
 
+app.get('/contact', function(req, res){
+  res.render('contact', {title: 'Contact'})
+})
+
 var port = process.env.PORT || 3000;
 
 app.listen(port);
