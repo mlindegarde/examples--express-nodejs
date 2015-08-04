@@ -9,21 +9,10 @@ app.set('views', __dirname + '/views');
 swig.setDefaults({cache: false});
 
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use('/public', express.static(__dirname + '/public'));
 
-
-app.get('/', function(req, res){
-  res.render('index', {title: 'Home'});
-})
-
-app.get('/about', function(req, res){
-  res.render('about', {title: 'About'})
-})
-
-app.get('/contact', function(req, res){
-  res.render('contact', {title: 'Contact'})
-})
+require('./routes/home')(app);
+require('./routes/recipe')(app);
 
 var port = process.env.PORT || 3000;
 
