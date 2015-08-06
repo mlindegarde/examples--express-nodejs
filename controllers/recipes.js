@@ -28,11 +28,16 @@ module.exports = {
         var connection = new sql.Connection(config, function(err) {
             var request = new sql.Request(connection);
             request.query('SELECT * FROM Recipes WHERE id='+req.params.id+';', function(err, recordset) {
-                for(var i = 0; i < recordset.length; i++){
-                    recordset[i].descriptionAsHTML = markdown.toHTML(recordset[i].description, 'Maruku');
+                if(req.accepts('json')) {
+                    res.json(recordset[0]);
                 }
+                else {
+                    for(var i = 0; i < recordset.length; i++){
+                        recordset[i].descriptionAsHTML = markdown.toHTML(recordset[i].description, 'Maruku');
+                    }
 
-                res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
+                    res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
+                }
             });
         });
     },
