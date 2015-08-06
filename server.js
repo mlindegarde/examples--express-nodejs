@@ -16,6 +16,12 @@ app.use(bodyParser.json());
 
 app.use('/public', express.static(__dirname + '/public'));
 
+app.get('/*', function(req, res, next){
+    res.locals.CDN = "http://www.some-cdn.com";
+
+    next();
+})
+
 require('./routes/home')(app);
 require('./routes/recipe')(app);
 
