@@ -5,6 +5,8 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/public/css/style.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
 </head>
 <body>
     <div class="wrapper">
@@ -20,5 +22,7 @@
         {% block body %}{% endblock %}
         </div>
     </div>
+
+    {% block scripts %}{% endblock %}
 </body>
 </html>

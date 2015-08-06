@@ -1,5 +1,6 @@
 var colors = require('colors');
 var sql = require('mssql');
+var markdown = require('markdown').markdown;
 
 var config = {
     user: 'family-recipe',
@@ -27,6 +28,10 @@ module.exports = {
         var connection = new sql.Connection(config, function(err) {
             var request = new sql.Request(connection);
             request.query('SELECT * FROM Recipes WHERE id='+req.params.id+';', function(err, recordset) {
+                for(var i = 0; i < recordset.length; i++){
+                    recordset[i].descriptionAsHTML = markdown.toHTML(recordset[i].description, 'Maruku');
+                }
+
                 res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
             });
         });
@@ -37,10 +42,15 @@ module.exports = {
             var request = new sql.Request(connection);
 
             request.input('name', req.body.name);
+            request.input('description', req.body.description);
             request.input('id', req.params.id);
 
-            request.query('UPDATE Recipes SET name = @name WHERE id = @id;', function(err) {
+            request.query('UPDATE Recipes SET name = @name, description = @description WHERE id = @id;', function(err) {
                 request.query('SELECT * FROM Recipes WHERE id='+req.params.id+';', function(err, recordset) {
+                    for(var i = 0; i < recordset.length; i++){
+                        recordset[i].descriptionAsHTML = markdown.toHTML(recordset[i].description, 'Maruku');
+                    }
+
                     res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
                 });
             });
