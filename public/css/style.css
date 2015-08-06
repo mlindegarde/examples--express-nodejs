@@ -1,5 +1,35 @@
 body {
-  background-color: #EFEFEF; }
-  body h1 {
-    font-family: sans-serif;
-    color: #FF0000; }
+  margin: 0;
+  padding: 0;
+  background-color: #006595;
+}
+
+.wrapper {
+  margin: 0 20%;
+  background-color: white;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 18px;
+  padding-bottom: 9px;
+}
+
+a, a:link, a:hover, a:active {
+  color: #006595;
+  text-decoration: underline;
+}
+
+nav {
+  background-color: #a7a9ac;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+}

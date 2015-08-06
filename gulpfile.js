@@ -8,18 +8,24 @@
  */
 
 var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
+var compass = require('gulp-compass');
+
 
 // The default task 'gulp'
 gulp.task('default', ['watch'], function() {});
 
 // The task that default runs 'gulp watch'
 gulp.task('watch', function() {
-  gulp.watch('public/sass/*.scss', ['sass']);
+  gulp.watch('public/sass/**/*', ['sass']);
 });
 
 // The task that watch runs on changes 'gulp sass'
 gulp.task('sass', function() {
-  return sass('public/sass/')
-    .pipe(gulp.dest('public/css'));
+  gulp.src('/public/sass/**/*')
+      .pipe(compass({
+        config_file: 'config.rb',
+        css: 'css',
+        sass: 'sass'
+      }))
+      .pipe(gulp.dest('app/assets/temp'))
 });

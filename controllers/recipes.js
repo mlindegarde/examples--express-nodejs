@@ -1,5 +1,4 @@
 var colors = require('colors');
-
 var sql = require('mssql');
 
 var config = {
@@ -18,10 +17,13 @@ module.exports = {
             var request = new sql.Request(connection);
 
             request.query('SELECT * FROM Recipes;', function(err, recordset) {
-                console.log(recordset[0].name.green);
+                //console.log(recordset[0].name.green);
+                res.render('recipes/index', {title: 'Recipes', model: recordset});
             });
         });
+    },
 
-        res.render('index', {title: 'Recipe'});
+    details: function(req, res){
+        res.render('recipes/details', null);
     }
 }

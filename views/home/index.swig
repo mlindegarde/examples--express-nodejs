@@ -1,5 +1,5 @@
 <!-- Extend the layout -->
-{% extends '../layout.html' %}
+{% extends '../layout.swig' %}
 
 <!-- Populate the title HTML tag -->
 {% block title %}
@@ -8,9 +8,5 @@
 
 <!-- Populate the body HTML tag -->
 {% block body %}
-<!-- Include the nav partial -->
-{% include '../partials/nav.html' %}
-
-<!-- Print/echo the title variable passed from the router -->
 <h1>{{ title }}</h1>
 {% endblock %}

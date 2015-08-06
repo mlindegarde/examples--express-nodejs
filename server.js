@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
 var swig = require('swig');
+var extras = require('swig-extras');
 var bodyParser = require('body-parser');
 
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+app.engine('swig', swig.renderFile);
+app.set('view engine', 'swig');
 app.set('views', __dirname + '/views');
+extras.useFilter(swig, 'truncate');
+
 swig.setDefaults({cache: false});
 
 app.use(bodyParser.urlencoded({extended: false}));

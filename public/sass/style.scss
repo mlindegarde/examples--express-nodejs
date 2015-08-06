@@ -1,8 +1,8 @@
-body {
-  background-color: #EFEFEF;
+@charset "UTF-8";
 
-  h1 {
-    font-family: sans-serif;
-    color: #FF0000;
-  }
-}
+@import "_setup/_variables";
+@import "_setup/_layout";
+@import "_setup/_types";
+@import "_base/_links";
+@import "_objects/main-nav";
+@import "_objects/page-header";
