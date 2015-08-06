@@ -12,6 +12,8 @@ extras.useFilter(swig, 'truncate');
 swig.setDefaults({cache: false});
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.use('/public', express.static(__dirname + '/public'));
 
 require('./routes/home')(app);

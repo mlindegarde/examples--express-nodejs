@@ -24,6 +24,26 @@ module.exports = {
     },
 
     details: function(req, res){
-        res.render('recipes/details', null);
+        var connection = new sql.Connection(config, function(err) {
+            var request = new sql.Request(connection);
+            request.query('SELECT * FROM Recipes WHERE id='+req.params.id+';', function(err, recordset) {
+                res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
+            });
+        });
+    },
+
+    update: function(req, res){
+        var connection = new sql.Connection(config, function(err) {
+            var request = new sql.Request(connection);
+
+            request.input('name', req.body.name);
+            request.input('id', req.params.id);
+
+            request.query('UPDATE Recipes SET name = @name WHERE id = @id;', function(err) {
+                request.query('SELECT * FROM Recipes WHERE id='+req.params.id+';', function(err, recordset) {
+                    res.render('recipes/details', {title: 'Recipes', model: recordset[0]});
+                });
+            });
+        });
     }
 }
