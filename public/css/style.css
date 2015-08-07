@@ -12,7 +12,7 @@ body {
 }
 
 .body.row {
-  background-color: white;
+  background-color: #fff5ff;
 }
 
 body {
@@ -46,6 +46,11 @@ nav ul li {
 header {
   background-color: #a7a9ac;
   height: 200px;
+}
+
+footer {
+  background-color: #fff5ff;
+  height: 100px;
 }
 
 textarea.editor {
