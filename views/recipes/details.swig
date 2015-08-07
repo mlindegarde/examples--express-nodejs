@@ -8,18 +8,27 @@
 
 <!-- Populate the body HTML tag -->
 {% block body %}
-    <div>
-        {% autoescape false %}{{ model.descriptionAsHTML }}{% endautoescape %}
-    </div>
     <form method="post" action="/recipes/{{ model.id }}">
-        <div>
-            <input type="text" name="name" id="name" value="{{ model.name }}" />
+        <div class="row">
+            <div class="columns large-12">
+                <input type="text" name="name" id="name" value="{{ model.name }}" />
+            </div>
         </div>
-        <div>
-            <textarea name="description" id="description" value="{{ model.description }}" >{{ model.description }}</textarea>
-            <div style="display: inline-block; width: 200px; height: 200px;" name="preview" id="preview" >{% autoescape false %}{{ model.descriptionAsHTML }}{%  endautoescape %}</div>
+
+        <div class="row">
+            <div class="columns large-6">
+                <div name="preview" id="preview" >{% autoescape false %}{{ model.descriptionAsHTML }}{%  endautoescape %}</div>
+            </div>
+            <div class="columns large-6">
+                <textarea class="editor" name="description" id="description" value="{{ model.description }}" >{{ model.description }}</textarea>
+            </div>
         </div>
-        <input type="submit" value="update" />
+
+        <div class="row">
+            <div class="column large-12 text-right">
+                <input type="submit" value="update" class="button radius" />
+            </div>
+        </div>
     </form>
 {% endblock %}
 
