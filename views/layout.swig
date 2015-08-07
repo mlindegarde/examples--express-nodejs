@@ -26,6 +26,8 @@
         </div>
     </div>
 
+    {% include 'partials/footer.swig' %}
+
     <script type="text/javascript">
         $(document).foundation();
     </script>
