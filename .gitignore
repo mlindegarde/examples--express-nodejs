@@ -33,3 +33,5 @@ node_modules
 # WebStorm
 .idea
 
+# Mac shit
+**/.DS_Store

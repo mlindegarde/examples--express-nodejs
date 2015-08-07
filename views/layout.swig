@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="/public/css/style.css">
+    {# Foundation CSS #}
+    <link rel="stylesheet" href="/public/css/vendor/normalize.css" />
+    <link rel="stylesheet" href="/public/css/vendor/foundation.min.css" />
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+    <link rel="stylesheet" href="/public/css/style.css" />
+
+    {# Foundation JS #}
+    <script type="text/javascript" src="/public/js/vendor/modernizr.js" ></script>
+    <script type="text/javascript" src="/public/js/vendor/jquery.js" ></script>
+    <script type="text/javascript" src="/public/js/vendor/foundation.min.js" ></script>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Recipes</h1>
-        </header>
+    {% include 'partials/nav.swig' %}
 
-        <nav>
-        {% include 'partials/nav.swig' %}
-        </nav>
+    {% include 'partials/header.swig' %}
 
-        <div>
-        {% block body %}{% endblock %}
+    <div class="body row">
+        <div class="columns">
+            {% block body %}{% endblock %}
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
 
     {% block scripts %}{% endblock %}
 </body>
